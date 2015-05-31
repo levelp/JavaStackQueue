@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import java.util.EmptyStackException;
+import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 
@@ -45,4 +46,46 @@ public class StackTest {
         Stack<MyClass> stack = new Stack<>();
         stack.pop();
     }
+
+    /**
+     * Stack overflow test
+     */
+    @Test(expected = StackOverflowError.class)
+    public void testStackOverflow() {
+        class MyClass {
+        }
+        // New stack with max size [0; 20]
+        Stack<MyClass> stack = new Stack<>(new Random().nextInt(20));
+
+        // fill the stack
+        for (int i = 0; i < stack.capacity(); i++) {
+            stack.push(new MyClass());
+        }
+
+        stack.push(new MyClass());
+
+    }
+
+    /**
+     * Test the stack printing
+     * with forEach
+     */
+    @Test
+    public void testIterator(){
+        // The stack with max size 10
+        Stack<Integer> stack = new Stack<>(10);
+        // The stack filling
+        for (int i = 0; i < stack.capacity(); i++) {
+            stack.push(i);
+        }
+
+        // test the stack iterator
+        Integer value = stack.size() - 1;
+        for (Integer i : stack){
+            System.out.println(value + " " + i);
+            assertEquals(value, i);
+            value--;
+        }
+    }
+
 }
