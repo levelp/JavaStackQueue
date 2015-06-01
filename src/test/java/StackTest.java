@@ -67,8 +67,8 @@ public class StackTest {
     }
 
     /**
-     * Test the stack printing
-     * with forEach
+     * Test the Iterable interface
+     * implementation
      */
     @Test
     public void testIterator(){
@@ -82,9 +82,7 @@ public class StackTest {
         // test the stack iterator
         Integer value = stack.size() - 1;
         for (Integer i : stack){
-            System.out.println(value + " " + i);
-            assertEquals(value, i);
-            value--;
+            assertEquals(value--, i);
         }
     }
 

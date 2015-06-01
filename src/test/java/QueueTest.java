@@ -1,6 +1,6 @@
 import org.junit.Test;
 
-import java.util.NoSuchElementException;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -30,5 +30,43 @@ public class QueueTest {
         }
         Queue<MyClass> queue = new Queue<>();
         queue.get();
+    }
+
+    /**
+     * Queue overflow test
+     */
+    @Test(expected = IllegalStateException.class)
+    public void testFullQueue() {
+        class MyClass{
+        }
+
+        // Filling and initialization
+        Queue<MyClass> queue = new Queue<>(new Random().nextInt(20));
+        for (int i = 0; i < queue.capacity(); i++) {
+            queue.put(new MyClass());
+        }
+
+        // test
+        queue.put(new MyClass());
+    }
+
+    /**
+     * Test the Iterable interface
+     * implementation
+     */
+    @Test
+    public void testIterator() {
+        // Filling and initialization
+        Queue<Integer> queue = new Queue<>(new Random().nextInt(20));
+        for (int i = 0; i < queue.capacity(); i++) {
+            queue.put(i);
+        }
+
+        // test
+        int value = 0;
+        for (Integer i : queue) {
+            assertEquals(Integer.valueOf(value++), i);
+        }
+
     }
 }

@@ -13,10 +13,17 @@ public class Stack<T> implements Iterable<T> {
     private Element<T> top;
 
 
+    /**
+     * Default constructor
+     */
     public Stack() {
         this(100);
     }
 
+    /**
+     * Constructor with the capacity
+     * @param MAX_SIZE
+     */
     public Stack(int MAX_SIZE) {
         this.MAX_SIZE = MAX_SIZE;
     }
@@ -94,7 +101,9 @@ public class Stack<T> implements Iterable<T> {
     }
 
     /**
-     * Iterator implementation
+     * The Iterable interface
+     * implementation
+     *
      * @return Iterator
      */
     @Override
