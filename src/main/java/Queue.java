@@ -32,7 +32,7 @@ public class Queue<T> {
      *
      * @return значение
      */
-    public T get() {
+    public T get() throws NoSuchElementException {
         /**
          * Проверяем наличие последнего элемента в очереди
          * если его нет - генерируем исключение.
@@ -71,5 +71,4 @@ public class Queue<T> {
         T value;
         Element next;
     }
-
 }
