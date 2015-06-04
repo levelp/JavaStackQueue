@@ -36,7 +36,7 @@ public class Stack<T> implements Iterable<T> {
     public void push(T v) {
         // TODO: реализовать
         if (size != MAX_SIZE) {
-            this.top = new Element<>(v, this.top);
+            this.top = new Element(v, this.top);
             size++;
         }
         else throw new StackOverflowError();
